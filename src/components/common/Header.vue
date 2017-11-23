@@ -1,13 +1,23 @@
-<template>
+<template id="head">
   <div class="header">
-      <button class="home">首页</button>
-      <h1 class="title">Movie</h1>
+      <button class="home">
+          <router-link to="/">首页</router-link>
+      </button>
+      <h1 class="title">{{title}}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  
+    data(){
+        return {
+            title:'Movie'
+        }
+    }, 
+    mounted(){
+        // console.log()
+        // this.title=location.pathname.split('/')[1];
+    }
 }
 </script>
 
@@ -21,6 +31,9 @@ export default {
     line-height: 1rem;
 }
 .home{
+    margin-left: 0.1rem;
+}
+.home a{
     color:rgb(33, 150, 243);
 }
 .title{

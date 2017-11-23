@@ -4,6 +4,10 @@ import HelloWorld from '@/components/HelloWorld'
 import Movie from '@/components/movie/Movie'
 import MovieList from '@/components/movie/MovieList'
 import MovieDetail from '@/components/movie/MovieDetail'
+import Music from '@/components/music/Music'
+import MusicList from '@/components/music/MusicList'
+import Book from '@/components/book/Book'
+import Photo from '@/components/photo/Photo'
 
 Vue.use(Router)
 
@@ -23,8 +27,20 @@ export default new Router({
           path: 'movieList',
           component: MovieList
         }, {
-          path: 'movieDetail',
+          path: '/movie/movieDetail/:movieId',
           component: MovieDetail
+        }, {
+          path: '/music',
+          component: Music
+        }, {
+          path: '/book',
+          component: Book
+        }, {
+          path: '/photo',
+          component: Photo
+        }, {
+          path: '/music/musicList/:type',
+          component: MusicList
         }
       ]
     }
