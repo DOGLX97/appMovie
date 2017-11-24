@@ -1,6 +1,6 @@
 <template>
   <div id="music">
-      <common-header bgColor="#6ad79f">Music</common-header>
+      <common-header bgColor="#6ad79f"></common-header>
       <router-view></router-view>
       <common-footer bgColor="#6ad79f"></common-footer>      
   </div>
@@ -9,11 +9,17 @@
 <script>
 import commonHeader from '../common/Header'
 import commonFooter from '../common/Footer'
+import store from '@/vuex/store'
+
 export default {
    components:{
       commonHeader,
       commonFooter
-   }
+   },
+   mounted(){
+     this.$store.dispatch('changeTitle','Music');
+   },
+   store
 }
 </script>
 

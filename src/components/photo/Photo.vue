@@ -9,10 +9,16 @@
 <script>
 import commonHeader from '../common/Header'
 import commonFooter from '../common/Footer'
+import store from '@/vuex/store'
+
 export default {
    components:{
       commonHeader,
       commonFooter
+   },
+   store,
+   mounted(){
+     this.$store.dispatch('changeTitle','Photo');
    }
 }
 </script>

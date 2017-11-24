@@ -4,12 +4,13 @@
           <router-link to="/">首页</router-link>
       </span>
       <h1 class="title">
-          <slot>Movie</slot>
+          {{$store.state.title}}
       </h1>
   </div>
 </template>
 
 <script>
+import store from '@/vuex/store'
 export default {
     data(){
         return {
@@ -19,7 +20,8 @@ export default {
     props:['bgColor'],
     mounted(){
       
-    }
+    },
+    store
 }
 </script>
 

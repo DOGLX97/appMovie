@@ -7,6 +7,7 @@ import MovieDetail from '@/components/movie/MovieDetail'
 import Music from '@/components/music/Music'
 import MusicType from '@/components/music/MusicType'
 import MusicList from '@/components/music/MusicList'
+import MusicInfo from '@/components/music/MusicInfo'
 import Book from '@/components/book/Book'
 import Photo from '@/components/photo/Photo'
 
@@ -41,6 +42,9 @@ export default new Router({
       }, {
         path:'/music/musicList/:type',
         component: MusicList
+      },{
+        path:'/music/musicInfo/:album_id',
+        component: MusicInfo
       }]
     }, {
       path: '/book',
