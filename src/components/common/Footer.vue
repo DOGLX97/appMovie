@@ -1,7 +1,7 @@
 <template>
-    <ul class="footer">
-        <li><router-link to="/">电影</router-link></li>
-        <li><router-link to="/music">音乐</router-link></li>
+    <ul class="footer" :style="{background:bgColor}">
+        <li><router-link to="/movie/movieList">电影</router-link></li>
+        <li><router-link to="/music/musicType">音乐</router-link></li>
         <li><router-link to="/book">书籍</router-link></li>
         <li><router-link to="/photo">图片</router-link></li>      
     </ul>
@@ -9,14 +9,14 @@
 
 <script>
 export default {
-  
+  props:['bgColor']
 }
 </script>
 
 <style scoped>
 .footer{
     height:      1rem;
-    background:  rgb(33, 150, 243);
+    /* background:  rgb(33, 150, 243); */
     position:    fixed;
     bottom:      0;
     width:       100%;
@@ -28,6 +28,10 @@ export default {
     text-align:  center;
 }
 .footer a{
-   color:        #fff;    
+   color:        #ccc;    
+}
+.footer a.router-link-active{
+    color: #fff;
+    outline: none;
 }
 </style>

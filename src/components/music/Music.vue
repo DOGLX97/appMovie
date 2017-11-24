@@ -1,29 +1,22 @@
 <template>
-  <ul class="type">
-      <li v-for=" (type,index) in typeArr" :key="index">
-          <router-link :to="'/music/musicList/'+type">
-              <img :src="'src/assets/img/music/'+type+'.jpg'" alt="">          
-          </router-link>
-      </li>
-  </ul>
+  <div id="music">
+      <common-header bgColor="#6ad79f">Music</common-header>
+      <router-view></router-view>
+      <common-footer bgColor="#6ad79f"></common-footer>      
+  </div>
 </template>
 
 <script>
-import Axios from 'axios'
+import commonHeader from '../common/Header'
+import commonFooter from '../common/Footer'
 export default {
-  data(){
-      return {
-          typeArr:['1','2','11','21']
-      }
-  },
+   components:{
+      commonHeader,
+      commonFooter
+   }
 }
 </script>
 
 <style scoped>
-.type{
-    margin: 1rem 0;
-}
-.type img{
-    width: 100%;
-}
+
 </style>

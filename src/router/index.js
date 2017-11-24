@@ -5,6 +5,7 @@ import Movie from '@/components/movie/Movie'
 import MovieList from '@/components/movie/MovieList'
 import MovieDetail from '@/components/movie/MovieDetail'
 import Music from '@/components/music/Music'
+import MusicType from '@/components/music/MusicType'
 import MusicList from '@/components/music/MusicList'
 import Book from '@/components/book/Book'
 import Photo from '@/components/photo/Photo'
@@ -29,20 +30,24 @@ export default new Router({
         }, {
           path: '/movie/movieDetail/:movieId',
           component: MovieDetail
-        }, {
-          path: '/music',
-          component: Music
-        }, {
-          path: '/book',
-          component: Book
-        }, {
-          path: '/photo',
-          component: Photo
-        }, {
-          path: '/music/musicList/:type',
-          component: MusicList
         }
       ]
+    }, {
+      path: '/music',
+      component: Music,
+      children:[{
+        path: 'musicType',
+        component: MusicType
+      }, {
+        path:'/music/musicList/:type',
+        component: MusicList
+      }]
+    }, {
+      path: '/book',
+      component: Book
+    }, {
+      path: '/photo',
+      component: Photo
     }
   ]
 })

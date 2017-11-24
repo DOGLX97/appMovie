@@ -1,6 +1,6 @@
 <template>  
-    <div>
-        <ul class="movie-list">
+    <div class="movie-list">
+        <ul >
             <li v-for="movie in movieArr" :key="movie.id" class="movie">
                 <div class='movie-img'>
                     <img :src='movie.img'/>
@@ -23,6 +23,7 @@
 
 <script>
 import Axios from 'axios'
+import $ from 'jquery'
 export default {
   data(){
       return {
@@ -31,13 +32,32 @@ export default {
       }
   },
   mounted(){
-      Axios.get(API_PROXY+"http://m.maoyan.com/movie/list.json?type=hot&limit=10&offset=0")
-      .then(res=>{
-        // console.log(res);
-        this.loadingShow=false;
-        this.movieArr=res.data.data.movies;
+      this.loading();
+      var that=this;
+      $(window).scroll(function(){
+          var windowHeight=$(this).height();
+          var windowScroll=$(this).scrollTop();
+          var documentHeight=$(document).height();
+          if(windowHeight+windowScroll>=documentHeight){
+            that.loadingShow=true;                                  
+            that.loading();
+          }   
       })
-      .catch();
+  },
+  methods:{
+      loading(){
+        if(this.movieArr.length<60){
+            Axios.get(API_PROXY+"http://m.maoyan.com/movie/list.json?type=hot&limit=10&offset="+this.movieArr.length)
+            .then(res         => {
+                // console.log(res);
+                this.loadingShow = false;
+                this.movieArr    = this.movieArr.concat(res.data.data.movies);
+            })
+            .catch();
+        }else{
+            this.loadingShow=false;
+        }
+      }
   }
 }
 </script>

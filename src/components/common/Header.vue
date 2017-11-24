@@ -1,9 +1,11 @@
 <template id="head">
-  <div class="header">
-      <button class="home">
+  <div class="header" :style="{background:bgColor}">
+      <span class="home">
           <router-link to="/">首页</router-link>
-      </button>
-      <h1 class="title">{{title}}</h1>
+      </span>
+      <h1 class="title">
+          <slot>Movie</slot>
+      </h1>
   </div>
 </template>
 
@@ -11,12 +13,12 @@
 export default {
     data(){
         return {
-            title:'Movie'
+            
         }
     }, 
+    props:['bgColor'],
     mounted(){
-        // console.log()
-        // this.title=location.pathname.split('/')[1];
+      
     }
 }
 </script>
@@ -24,17 +26,19 @@ export default {
 <style scoped>
 .header{
     height:     1rem;
-    background: rgb(33, 150, 243);
+    /* background: rgb(33, 150, 243); */
     position:   fixed;
     top:        0;
     width: 100%;
     line-height: 1rem;
 }
 .home{
-    margin-left: 0.1rem;
+    margin-left: 0.2rem;
 }
 .home a{
-    color:rgb(33, 150, 243);
+    color:#fff;
+    font-weight:bold;
+    outline: none;
 }
 .title{
     position: absolute;
