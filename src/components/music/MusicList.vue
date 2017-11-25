@@ -4,7 +4,7 @@
         <ul>
             <li v-for="song in songArr" :key="song.song_id" class="music-info">
                 <span class="music-title">
-                    <router-link :to="'/music/MusicInfo/'+song.album_id">{{song.title}}</router-link>    
+                    <router-link :to="'/music/MusicInfo/'+song.song_id">{{song.title}}</router-link>    
                 </span>               
                 <span class="music-author">{{song.author}}</span>
             </li>
@@ -44,10 +44,10 @@ export default {
   },
   methods:{
       loadingMusic(){
-        if(this.songArr.length<60){
-            Axios.get(API_PROXY+"http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&callback=&from=webapp_music&method=baidu.ting.billboard.billList&type="+this.type+"&size=30&offset="+this.songArr.length)
+        if(this.songArr.length<40){
+            Axios.get(API_PROXY+"http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&callback=&from=webapp_music&method=baidu.ting.billboard.billList&type="+this.type+"&size=15&offset="+this.songArr.length)
             .then(res=>{
-                console.log(res.data.song_list);
+                // console.log(res.data.song_list);
                 this.songArr=this.songArr.concat(res.data.song_list);   
                 this.loadingShow=false;
                 // console.log(this.songArr);  

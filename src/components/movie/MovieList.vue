@@ -32,7 +32,7 @@ export default {
       }
   },
   mounted(){
-      this.loading();
+    //   this.loading();
       var that=this;
       $(window).scroll(function(){
           var windowHeight=$(this).height();
