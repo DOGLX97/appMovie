@@ -23,6 +23,10 @@ export default {
 .type{
     margin: 1rem 0;
 }
+/* .type li{
+    float: left;
+    width: 50%;
+} */
 .type img{
     width: 100%;
 }

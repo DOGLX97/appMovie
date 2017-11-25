@@ -30,6 +30,7 @@ export default {
     mounted(){
       var arr=location.href.split("/");
       this.movieId=arr[arr.length-1];
+    //   发送请求
       Axios.get(API_PROXY+"http://m.maoyan.com/movie/"+this.movieId+".json")
       .then(res=>{
         // console.log(this.movieId);

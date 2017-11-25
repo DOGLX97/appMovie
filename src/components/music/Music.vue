@@ -17,6 +17,7 @@ export default {
       commonFooter
    },
    mounted(){
+    //  改变title的值
      this.$store.dispatch('changeTitle','Music');
    },
    store

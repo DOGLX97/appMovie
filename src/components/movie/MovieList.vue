@@ -32,6 +32,7 @@ export default {
       }
   },
   mounted(){
+    //   猫眼API接口不好使了
     //   this.loading();
       var that=this;
       $(window).scroll(function(){
@@ -46,6 +47,7 @@ export default {
   },
   methods:{
       loading(){
+        // 发送请求，请求数据
         if(this.movieArr.length<60){
             Axios.get(API_PROXY+"http://m.maoyan.com/movie/list.json?type=hot&limit=10&offset="+this.movieArr.length)
             .then(res         => {

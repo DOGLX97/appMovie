@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Movie from '@/components/movie/Movie'
 import MovieList from '@/components/movie/MovieList'
 import MovieDetail from '@/components/movie/MovieDetail'
@@ -18,8 +17,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
       redirect: '/movie/movieList'
     }, {
       path: '/movie',
@@ -36,6 +33,7 @@ export default new Router({
     }, {
       path: '/music',
       component: Music,
+      redirect: '/music/musicType',
       children:[{
         path: 'musicType',
         component: MusicType

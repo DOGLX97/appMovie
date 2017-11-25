@@ -1,6 +1,6 @@
 <template>
     <div class="music-list">
-        <h3>歌曲列表</h3>
+        <h4>歌曲列表</h4>
         <ul>
             <li v-for="song in songArr" :key="song.song_id" class="music-info">
                 <span class="music-title">
@@ -31,6 +31,7 @@ export default {
     this.loadingMusic();    
     //   console.log(this.type);
      var that=this;
+    //  判断滚动条到底加载数据
       $(window).scroll(function(){
           var windowHeight=$(this).height();
           var windowScroll=$(this).scrollTop();
@@ -43,6 +44,7 @@ export default {
     
   },
   methods:{
+    //   发送请求加载数据
       loadingMusic(){
         if(this.songArr.length<40){
             Axios.get(API_PROXY+"http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&callback=&from=webapp_music&method=baidu.ting.billboard.billList&type="+this.type+"&size=15&offset="+this.songArr.length)
@@ -66,8 +68,9 @@ export default {
 .music-list{
     margin: 1rem 0;
 }
-.music-list h3{
+.music-list h4{
     text-align: center;
+    margin: 0.1rem 0;
 }
 .music-info{
     margin: 0.2rem;
@@ -75,8 +78,12 @@ export default {
 }
 .music-author{
     float:right;
+    color:#919191;     
 }
 .loading-gif{
     text-align: center;
+}
+.music-title a{
+    color:#919191; 
 }
 </style>
