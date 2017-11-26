@@ -32,9 +32,10 @@ export default {
       }
   },
   mounted(){
-    //   猫眼API接口不好使了
-    //   this.loading();
+    //   防止测试过多请求
+      this.loading();
       var that=this;
+    //   监听滚动条事件
       $(window).scroll(function(){
           var windowHeight=$(this).height();
           var windowScroll=$(this).scrollTop();

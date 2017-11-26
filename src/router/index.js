@@ -9,6 +9,8 @@ import MusicList from '@/components/music/MusicList'
 import MusicInfo from '@/components/music/MusicInfo'
 import Book from '@/components/book/Book'
 import Photo from '@/components/photo/Photo'
+import PhotoWall from '@/components/photo/PhotoWall'
+
 
 Vue.use(Router)
 
@@ -21,6 +23,7 @@ export default new Router({
     }, {
       path: '/movie',
       component: Movie,
+      redirect: '/movie/movieList',
       children:[
         {
           path: 'movieList',
@@ -49,7 +52,12 @@ export default new Router({
       component: Book
     }, {
       path: '/photo',
-      component: Photo
+      component: Photo,
+      redirect: '/photo/photoWall',
+      children:[{
+        path: 'photoWall',
+        component: PhotoWall
+      }]
     }
   ]
 })

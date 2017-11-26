@@ -42,12 +42,12 @@ export default {
   background: #000;
 }
 .slide1{
-  background: url(http://pic.qiantucdn.com/58pic/13/87/78/058PICV58PICiWZ_1024.jpg) no-repeat center center/cover;
+  background: url(/static/img/book1.jpg) no-repeat center center/cover;
 }
 .slide2{
-  background: url(http://pic16.nipic.com/20110901/7817560_172348319000_2.jpg) no-repeat center center/cover;
+  background: url(/static/img/book2.jpg) no-repeat center center/cover;
 }
 .slide3{
-  background: url(http://pic19.nipic.com/20120225/3518737_175034002356_2.jpg) no-repeat center center/cover;
+  background: url(/static/img/book3.jpg) no-repeat center center/cover;
 }
 </style>
