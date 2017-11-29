@@ -1,6 +1,6 @@
 <template> 
     <div class="music-info">
-        <a-player :music="musicList" :autoplay="true" v-if="isShow" :showlrc="3"></a-player>
+        <a-player :music="musicList" :autoplay="true" v-if="isShow" :showlrc="3" :mutic="true"></a-player>
     </div>
 </template> 
   
@@ -42,6 +42,12 @@ export default {
         this.isShow=true;        
       })
       .catch(res => {});
+  },
+  // 在路由离开前的钩子函数
+  beforeRouteLeave: (to, from, next) => {
+    // ...
+    
+    next();
   }
 };
 </script>

@@ -30,7 +30,7 @@ export default {
     // 监听滚动条事件，滚动条到底加载数据      
     window.onscroll=()=>{
       let clientHeight=document.documentElement.clientHeight;
-      let scrollTop=document.documentElement.scrollTop;
+      let scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
       let scrollHeight=document.documentElement.scrollHeight;
       // console.log(clientHeight,scrollTop,scrollHeight);
       if(clientHeight+scrollTop==scrollHeight){
