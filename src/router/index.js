@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Movie from '@/components/movie/Movie'
 import MovieList from '@/components/movie/MovieList'
 import MovieDetail from '@/components/movie/MovieDetail'
+import MovieDiscuss from '@/components/movie/MovieDiscuss'
 import Music from '@/components/music/Music'
 import MusicType from '@/components/music/MusicType'
 import MusicList from '@/components/music/MusicList'
@@ -30,6 +31,9 @@ export default new Router({
         }, {
           path: '/movie/movieDetail/:movieId',
           component: MovieDetail
+        }, {
+          path: 'movieDiscuss',
+          component: MovieDiscuss
         }
       ]
     }, {

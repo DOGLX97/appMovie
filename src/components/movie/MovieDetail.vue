@@ -6,15 +6,20 @@
           </div>
           <div class="movie-title">
             <h3>{{movieDetail.nm}}</h3>
+            <p>{{movieDetail.cat}}</p>
             <p>导演:{{movieDetail.dir}}</p>
             <p>{{movieDetail.src}}</p>
             <p>{{movieDetail.scm}}</p>
+            <p>评分:{{movieDetail.sc}}</p>
           </div>
       </div>
       <p class="movie-info">
         故事梗概: <br/>
         {{movieDetail.dra}}
       </p>
+      <div class="movie-discuss">
+          <router-link to="/movie/movieDiscuss">查看短评</router-link>
+      </div>
   </div>
 </template>
 
@@ -34,7 +39,7 @@ export default {
       Axios.get(API_PROXY+"http://m.maoyan.com/movie/"+this.movieId+".json")
       .then(res=>{
         // console.log(this.movieId);
-        // console.log(res.data.data);
+        console.log(res.data.data);
         this.movieDetail=res.data.data.MovieDetailModel;
         this.movieDetail.dra=this.movieDetail.dra.substring(3,this.movieDetail.dra.indexOf('</p>'));
       })
@@ -61,5 +66,14 @@ export default {
 }
 .movie-info{
     margin:0.2rem 0;
+    border-top:2px solid #ccc; 
+}
+.movie-discuss{
+    text-align: center;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+.movie-discuss a{
+    color: #000;
 }
 </style>
