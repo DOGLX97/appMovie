@@ -42,12 +42,12 @@ export default {
   background: #000;
 }
 .slide1{
-  background: url(/static/img/book1.jpg) no-repeat center center/cover;
+  background: url(/static/img/book1.jpeg) no-repeat center center/cover;
 }
 .slide2{
-  background: url(/static/img/book2.jpg) no-repeat center center/cover;
+  background: url(/static/img/book2.jpeg) no-repeat center center/cover;
 }
 .slide3{
-  background: url(/static/img/book3.jpg) no-repeat center center/cover;
+  background: url(/static/img/book3.jpeg) no-repeat center center/cover;
 }
 </style>

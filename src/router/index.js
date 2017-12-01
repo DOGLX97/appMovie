@@ -11,7 +11,6 @@ import Book from '@/components/book/Book'
 import Photo from '@/components/photo/Photo'
 import PhotoWall from '@/components/photo/PhotoWall'
 
-
 Vue.use(Router)
 
 export default new Router({
