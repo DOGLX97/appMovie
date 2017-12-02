@@ -18,7 +18,7 @@
         {{movieDetail.dra}}
       </p>
       <div class="movie-discuss">
-          <router-link to="/movie/movieDiscuss">查看短评</router-link>
+          <router-link :to="'/movie/movieDiscuss/'+movieId">查看短评</router-link>
       </div>
   </div>
 </template>

@@ -32,7 +32,7 @@ export default new Router({
           path: '/movie/movieDetail/:movieId',
           component: MovieDetail
         }, {
-          path: 'movieDiscuss',
+          path: '/movie/movieDiscuss/:movieId',
           component: MovieDiscuss
         }
       ]

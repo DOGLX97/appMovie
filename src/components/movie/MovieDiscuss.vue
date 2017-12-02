@@ -1,7 +1,8 @@
 <template>
-  <ul class="movie-discuss">
+  <div class="movie-discuss">
+    <ul>
       <li v-for="cmt in cmts" :key="cmt.id" class="movie-discuss-list">
-        <div>
+        <div class="movie-discuss-title">
             <img :src="cmt.avatarurl" alt="" class="movie-look">            
             <span>{{cmt.nickName}}</span> 
             <span class="movie-discuss-time">{{cmt.time}}</span>
@@ -9,7 +10,14 @@
         <p>评分:{{cmt.score}}</p>
         <p>{{cmt.content}}</p>
       </li>
-  </ul>
+    </ul>
+    <div v-show="loadingShow" class="loading">
+      <img src="../../assets/img/loading.gif"/>
+    </div>
+    <div v-show="tip">
+      <span>评论已经全部加载！</span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -17,19 +25,42 @@ import Axios from "axios";
 export default {
   data() {
     return {
-      cmts: []
+      cmts: [],
+      loadingShow:true,
+      tip:false
     };
   },
   mounted() {
-    Axios.get(
-      API_PROXY +
-        "http://m.maoyan.com/comments.json?movieid=246363&limit=5&offset=5"
-    )
-      .then(res => {
-        console.log(res.data.data.CommentResponseModel.cmts);
-        this.cmts = res.data.data.CommentResponseModel.cmts;
-      })
-      .catch(res => {});
+    this.play();
+    window.onscroll=()=>{
+      let clientHeight=document.documentElement.clientHeight;
+      let scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+      let offsetHeight=document.documentElement.offsetHeight;
+      // console.log(clientHeight,scrollTop,offsetHeight);
+      if(clientHeight+scrollTop>=offsetHeight){
+        this.loadingShow=true;
+        if(!this.tip){
+          this.play();
+        }else{
+          this.loadingShow=false;
+        }
+      }
+    }
+  },
+  methods:{
+    play(){
+        Axios.get(API_PROXY 
+        +"http://m.maoyan.com/comments.json?movieid="+this.$route.params.movieId+"&limit=5&offset="+this.cmts.length)
+        .then(res => {
+          // console.log(res.data.data.CommentResponseModel.cmts);
+          this.loadingShow=false;
+          if(res.data.data.CommentResponseModel.cmts.length<5){
+            this.tip=true;
+          }
+          this.cmts = this.cmts.concat(res.data.data.CommentResponseModel.cmts);
+        })
+        .catch(res => {});
+    }
   }
 };
 </script>
@@ -41,9 +72,10 @@ export default {
 .movie-look{
   width: 20px;
   height: 20px;
-  background: #ccc;
+  background: #fff;
   display: inline-block;
   border-radius:50%; 
+  vertical-align: middle;
 }
 .movie-discuss-list{
     margin: 0.2rem 0;
@@ -53,5 +85,11 @@ export default {
 }
 .movie-discuss-time{
     float: right;
+}
+.loading{
+  text-align: center;
+}
+.movie-discuss-title{
+  background: #ccc;
 }
 </style>
