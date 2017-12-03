@@ -39,7 +39,7 @@ export default {
       Axios.get(API_PROXY+"http://m.maoyan.com/movie/"+this.movieId+".json")
       .then(res=>{
         // console.log(this.movieId);
-        console.log(res.data.data);
+        // console.log(res.data.data);
         this.movieDetail=res.data.data.MovieDetailModel;
         this.movieDetail.dra=this.movieDetail.dra.substring(3,this.movieDetail.dra.indexOf('</p>'));
       })

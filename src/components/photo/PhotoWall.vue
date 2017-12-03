@@ -2,7 +2,9 @@
   <div class="photo-wall">
     <ul>
       <li v-for="(photo,index) in photoArr" :key="index" class="photo-wall-img">
-          <img :src="photo.src" alt="图片加载失败">
+        <router-link :to="'/photo/photoDetail/'+index">
+          <img :src="photo.src" alt="图片加载失败">          
+        </router-link>
       </li>
     </ul>
     <div class="loading" v-show="isShow">
@@ -57,7 +59,8 @@ export default {
           if(data.length<10){
             this.isTip=true;
           }
-          this.photoArr=this.photoArr.concat(data);        
+          this.photoArr=this.photoArr.concat(data);      
+          this.$store.dispatch('setPhotoList',res.data.photoData);  
         })
         .catch(res => {});
     }
@@ -72,6 +75,11 @@ export default {
 .photo-wall-img{
   float: left;
   width: 50%;
+}
+.photo-wall-img a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 .photo-wall-img img{
     width: 100%;

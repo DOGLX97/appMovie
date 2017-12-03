@@ -11,6 +11,7 @@ import MusicInfo from '@/components/music/MusicInfo'
 import Book from '@/components/book/Book'
 import Photo from '@/components/photo/Photo'
 import PhotoWall from '@/components/photo/PhotoWall'
+import PhotoDetail from '@/components/photo/PhotoDetail'
 
 Vue.use(Router)
 
@@ -60,6 +61,9 @@ export default new Router({
       children:[{
         path: 'photoWall',
         component: PhotoWall
+      }, {
+        path: '/photo/photoDetail/:index',
+        component: PhotoDetail
       }]
     }
   ]
